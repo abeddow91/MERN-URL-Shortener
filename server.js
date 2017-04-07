@@ -4,8 +4,12 @@ import apiRouter from './api';
 import express from 'express';
 const server = express();
 
+server.set('view engine', 'ejs');
+
 server.get('/', (req, res) => {
-  res.send('Hello Express');
+  res.render('index', {
+    content: 'Url Shortener'
+  });
 });
 
 server.use('/api', apiRouter);
