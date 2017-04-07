@@ -76,6 +76,7 @@ class urlForm extends Component {
       <input className='input' ref='inputUrl' placeholder='Paste a link to shorten it' onChange={this.handleChange}/>
       <br />
       <button className="btn btn-default btn-block">Shorten Url</button>
+      {this.state.shortUrl.length > 0 ? 'Your new URL is: ' + this.state.shortUrl : this.state.errorMessage}
       </form>
       </div>
     );
