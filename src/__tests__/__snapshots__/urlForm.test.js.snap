@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render the Header 1`] = `
+<div
+  className="urls text-center"
+>
+  <form
+    className="form"
+  >
+    <input
+      className="input"
+      placeholder="Paste a link to shorten it"
+    />
+    <br />
+    <button
+      className="btn btn-default btn-block"
+    >
+      Shorten Url
+    </button>
+  </form>
+</div>
+`;

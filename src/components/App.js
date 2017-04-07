@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import axios from 'axios';
 
 import Header from './Header';
+import UrlForm from './UrlForm';
 
 
 class App extends Component {
@@ -26,6 +27,7 @@ class App extends Component {
       <div className="App">
       <Header message = {this.state.pageHeader} />
       <div>
+      <UrlForm />
       </div>
       </div>
 

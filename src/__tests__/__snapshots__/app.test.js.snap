@@ -5,8 +5,10 @@ exports[`render should render the app 1`] = `
   className="App"
 >
   <Header
-    message="URL Shortener"
+    message="Url Shortener"
   />
-  <div />
+  <div>
+    <urlForm />
+  </div>
 </div>
 `;
