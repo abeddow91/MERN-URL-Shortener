@@ -7,13 +7,18 @@ const server = express();
 
 server.set('view engine', 'ejs');
 
-import './serverRender';
+import serverRender from './serverRender';
 
 server.get('/', (req, res) => {
-  res.render('index', {
-    content: '...'
-  });
+  serverRender()
+    .then(content => {
+      res.render('index', {
+        content
+      });
+    })
+    .catch(console.error);
 });
+
 
 server.use('/api', apiRouter);
 server.use(express.static('public'));
