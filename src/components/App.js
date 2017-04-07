@@ -35,5 +35,8 @@ class App extends Component {
   }
 }
 
+App.propTypes = {
+  initialUrls: React.PropTypes.array
+};
 
 export default App;

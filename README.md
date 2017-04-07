@@ -2,14 +2,19 @@
 
 
 ## Description
-A URL shortener that, when given a url provides a unique short url that directs to the original link.
+A URL shortener that, when given a url, provides a unique short url that directs to the original link.
 
 ---
 
 ## Instructions
-
+$ npm install
+$ mongod
+$ mongo
+$ npm run dev
+$ npm start
 
 ### Testing
+run $ npm test
 
 ---
 
