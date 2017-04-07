@@ -18,18 +18,18 @@ var UrlData = mongoose.model('UrlData', urlSchema);
 
 router.get('/urls', function (req, res) {
   UrlData.find()
-    .then(function(doc) {
-      res.send(doc);
-    });
+  .then(function(doc) {
+    res.send(doc);
+  });
 });
 
 function counter(err, count) {
- if(count>0) {
-   //its not unique
-   return true;
- } else {
-   return false;
- }
+  if(count>0) {
+    //its not unique
+    return true;
+  } else {
+    return false;
+  }
 }
 
 function genRand() {
@@ -37,24 +37,36 @@ function genRand() {
 }
 
 router.post('/insert', function (req, res) {
-var count = 0;
-console.log(req.body);
-var notUnique = true;
-var number = genRand();
-while (notUnique) {
- UrlData.count({short: number}, notUnique = counter(count));
- if (notUnique) {
-   number = genRand();
- }
-}
-var item = {
- longUrl: req.body.longUrl,
- short: number
-};
-var data = new UrlData(item);
-//will save to database
-data.save();
-res.send(item);
+  var count = 0;
+  console.log(req.body);
+  var notUnique = true;
+  var number = genRand();
+  while (notUnique) {
+    UrlData.count({short: number}, notUnique = counter(count));
+    if (notUnique) {
+      number = genRand();
+    }
+  }
+  var item = {
+    longUrl: req.body.longUrl,
+    short: number
+  };
+  var data = new UrlData(item);
+  //will save to database
+  data.save();
+  res.send(item);
+});
+
+
+router.get('/:short', function (req, res) {
+  UrlData.findOne({ short: req.params.short}, function (err, url) {
+    if (err) {
+      console.log(err);
+      res.send('sorry this page does not exist');
+    };
+    var longUrl = url.longUrl
+    res.redirect(longUrl);
+  });
 });
 
 
