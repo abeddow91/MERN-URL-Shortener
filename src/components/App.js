@@ -1,17 +1,17 @@
 import React from 'react';
 
-const App = (props) => {
+import Header from './Header';
+
+const App = () => {
   return (
-    <h2 className="text-center">
-    {props.headerMessage}
-    </h2>
+    <div className="App">
+    <Header message = "Naming Contests" />
+    <div>
+    ...
+    </div>
+    </div>
+
   );
 };
 
-App.propTypes = {
-  headerMessage: React.PropTypes.string.isRequired
-};
-
-App.defaultProps = {
-  headerMessage: 'URL Shortener'
-};
+export default App;
