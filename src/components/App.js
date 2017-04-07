@@ -7,9 +7,8 @@ class App extends Component {
   render () {
     return (
       <div className="App">
-      <Header message = "Naming Contests" />
+      <Header message = "URL Shortener" />
       <div>
-      ...
       </div>
       </div>
 

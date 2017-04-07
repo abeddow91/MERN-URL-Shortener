@@ -2,9 +2,9 @@ import React from 'react';
 
 const Header = ({ message }) => {
   return (
-    <h2 className="Header text-center">
-    {message}
-    </h2>
+    <h1 className="Header text-center">
+      {message}
+    </h1>
   );
 };
 
@@ -13,7 +13,7 @@ Header.propTypes = {
 };
 
 Header.defaultProps = {
-  message: 'This is the default header message'
+  message: 'Url Shortener'
 };
 
 
