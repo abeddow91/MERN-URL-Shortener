@@ -6,7 +6,7 @@
   "scripts": {
     "start": "nodemon --exec babel-node server.js --ignore public/",
     "dev": "webpack -wd",
-    "test": "jest --watch"
+    "test": "jest --watch --verbose"
   },
   "author": "Anna Beddow",
   "license": "ISC",

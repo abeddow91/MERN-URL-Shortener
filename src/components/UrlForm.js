@@ -1,16 +1,20 @@
 import React, {Component} from 'react';
 import {isURL} from 'validator';
+import axios from 'axios';
+
 
 class urlForm extends Component {
   constructor(props) {
     super(props);
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleUrlSubmission = this.handleUrlSubmission.bind(this);
 
     this.state = {
       longUrl: '',
       shortUrl: '',
       shortId: 0,
+      errorMessage: '',
     };
   }
 
@@ -31,6 +35,22 @@ class urlForm extends Component {
       this.refs.inputUrl.value= '' ;
       return;
     }
+    this.handleUrlSubmission();
+  }
+
+  handleUrlSubmission(){
+    var self = this;
+    axios.post('/api/insert',
+    {longUrl: self.state.longUrl})
+    .then(response => {
+      console.log(response.data.short)
+      self.setState({
+        shortId: response.data.short
+      });
+    })
+    .catch(function (err) {
+      console.log('error', err);
+    });
   }
 
 
