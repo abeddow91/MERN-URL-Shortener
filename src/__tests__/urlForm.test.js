@@ -47,13 +47,44 @@ it("it stores the error message if an incorrect url is submitted", () => {
   expect(testDoc.state.errorMessage).toBe('Sorry that isn\'t a valid URL. Please provide a correct format eg: http://example.com');
 });
 
-it("it stores the shortId in state", () => {
+it("it clears the errorMessage if an correct url is submitted", () => {
   const testDoc = ReactTestUtils.renderIntoDocument(<UrlForm />);
   const input = ReactTestUtils.findRenderedDOMComponentWithClass(testDoc, "input");
   const btn = ReactTestUtils.findRenderedDOMComponentWithClass(testDoc, "btn");
   const form = ReactTestUtils.findRenderedDOMComponentWithClass(testDoc, "form");
-  input.value = 'https://www.facebook.com';
+  input.value = 'facebook';
+  ReactTestUtils.Simulate.change(input);
+  ReactTestUtils.Simulate.submit(form);    input.value = 'https://www.facebook.com';
   ReactTestUtils.Simulate.change(input);
   ReactTestUtils.Simulate.submit(form);
-  expect(testDoc.state.shortId).not.toBe(0);
+  expect(testDoc.state.errorMessage).toBe('');
 });
+
+it("it clears the longUrl after submitted", () => {
+    const testDoc = ReactTestUtils.renderIntoDocument(<UrlForm />);
+    const input = ReactTestUtils.findRenderedDOMComponentWithClass(testDoc, "input");
+    const btn = ReactTestUtils.findRenderedDOMComponentWithClass(testDoc, "btn");
+    const form = ReactTestUtils.findRenderedDOMComponentWithClass(testDoc, "form");
+    input.value = 'https://www.facebook.com';
+    ReactTestUtils.Simulate.change(input);
+    ReactTestUtils.Simulate.submit(form);
+    expect(testDoc.state.longUrl).toBe("");
+  });
+
+  it("creates a shortened URL and stores in state", () => {
+    const testDoc = ReactTestUtils.renderIntoDocument(<UrlForm />);
+    testDoc.state.shortId = 160291;
+    testDoc.makeShortUrl();
+    expect(testDoc.state.shortUrl).toBe('localhost:8080/api/160291');
+  });
+
+  it("it stores the users input", () => {
+    const testDoc = ReactTestUtils.renderIntoDocument(<UrlForm />);
+    const input = ReactTestUtils.findRenderedDOMComponentWithClass(testDoc, "input");
+    const btn = ReactTestUtils.findRenderedDOMComponentWithClass(testDoc, "btn");
+    expect(testDoc.state.longUrl).toBe("");
+    input.value = 'https://www.facebook.com';
+    ReactTestUtils.Simulate.change(input);
+    ReactTestUtils.Simulate.click(btn);
+    expect(testDoc.state.shortId).not.toBe(0);
+  });

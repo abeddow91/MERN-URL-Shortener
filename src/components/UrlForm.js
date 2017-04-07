@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import {isURL} from 'validator';
 import axios from 'axios';
 
-
 class urlForm extends Component {
   constructor(props) {
     super(props);
@@ -17,7 +16,6 @@ class urlForm extends Component {
       errorMessage: '',
     };
   }
-
 
   handleSubmit(e) {
     e.preventDefault();
@@ -40,7 +38,6 @@ class urlForm extends Component {
     this.refs.inputUrl.value= '' ;
   }
 
-
   handleUrlSubmission(){
     var self = this;
     axios.post('/api/insert',
@@ -55,7 +52,6 @@ class urlForm extends Component {
     });
   }
 
-
   makeShortUrl() {
     var createdString = 'localhost:8080/api/' + this.state.shortId;
     this.setState({
@@ -67,7 +63,6 @@ class urlForm extends Component {
     this.setState({longUrl: e.target.value},
     );
   }
-
 
   render() {
     return (
@@ -81,7 +76,6 @@ class urlForm extends Component {
       </div>
     );
   }
-
 }
 
 export default urlForm;
