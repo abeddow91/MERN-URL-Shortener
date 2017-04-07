@@ -4,10 +4,12 @@ exports[`render should render the app 1`] = `
 <div
   className="App"
 >
-  <Header
-    message="Url Shortener"
-  />
-  <div>
+  <div
+    className="jumbotron"
+  >
+    <Header
+      message="Url Shortener"
+    />
     <urlForm />
   </div>
 </div>

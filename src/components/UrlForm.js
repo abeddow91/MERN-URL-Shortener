@@ -45,7 +45,7 @@ class urlForm extends Component {
     .then(response => {
       self.setState({
         shortId: response.data.short
-      }, this.makeShortUrl);
+      }, self.makeShortUrl);
     })
     .catch(function (err) {
       console.log('error', err);
@@ -66,11 +66,16 @@ class urlForm extends Component {
 
   render() {
     return (
+
       <div className="urls text-center">
       <form className='form' onSubmit={this.handleSubmit}>
-      <input className='input' ref='inputUrl' placeholder='Paste a link to shorten it' onChange={this.handleChange}/>
       <br />
-      <button className="btn btn-default btn-block">Shorten Url</button>
+      <input className='input' ref='inputUrl' placeholder='Paste a URL to shorten' onChange={this.handleChange}/>
+      <br />
+      <br />
+      <button className="btn btn-primary btn-lg">Shorten URL</button>
+      <br />
+      <br />
       {this.state.shortUrl.length > 0 ? 'Your new URL is: ' + this.state.shortUrl : this.state.errorMessage}
       </form>
       </div>

@@ -25,10 +25,10 @@ class App extends Component {
   render () {
     return (
       <div className="App">
-      <Header message = {this.state.pageHeader} />
-      <div>
-      <UrlForm />
-      </div>
+        <div className="jumbotron" >
+        <Header message = {this.state.pageHeader} />
+        <UrlForm />
+        </div>
       </div>
 
     );

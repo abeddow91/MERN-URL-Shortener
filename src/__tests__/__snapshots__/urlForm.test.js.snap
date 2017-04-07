@@ -11,13 +11,13 @@ exports[`should render the Header 1`] = `
     <input
       className="input"
       onChange={[Function]}
-      placeholder="Paste a link to shorten it"
+      placeholder="Paste a URL to shorten"
     />
     <br />
     <button
-      className="btn btn-default btn-block"
+      className="btn btn-primary btn-lg"
     >
-      Shorten Url
+      Shorten URL
     </button>
   </form>
 </div>

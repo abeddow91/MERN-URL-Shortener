@@ -77,14 +77,3 @@ it("it clears the longUrl after submitted", () => {
     testDoc.makeShortUrl();
     expect(testDoc.state.shortUrl).toBe('localhost:8080/api/160291');
   });
-
-  it("it stores the users input", () => {
-    const testDoc = ReactTestUtils.renderIntoDocument(<UrlForm />);
-    const input = ReactTestUtils.findRenderedDOMComponentWithClass(testDoc, "input");
-    const btn = ReactTestUtils.findRenderedDOMComponentWithClass(testDoc, "btn");
-    expect(testDoc.state.longUrl).toBe("");
-    input.value = 'https://www.facebook.com';
-    ReactTestUtils.Simulate.change(input);
-    ReactTestUtils.Simulate.click(btn);
-    expect(testDoc.state.shortId).not.toBe(0);
-  });
