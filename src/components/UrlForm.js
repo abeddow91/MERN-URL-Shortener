@@ -18,10 +18,6 @@ class urlForm extends Component {
     };
   }
 
-  handleChange(e) {
-    this.setState({longUrl: e.target.value},
-    );
-  }
 
   handleSubmit(e) {
     e.preventDefault();
@@ -36,23 +32,41 @@ class urlForm extends Component {
       return;
     }
     this.handleUrlSubmission();
+    this.setState({
+      longUrl: '',
+      errorMessage: '',
+      shortUrl: 'localhost:8080/api/' + this.state.shortId
+    });
+    this.refs.inputUrl.value= '' ;
   }
+
 
   handleUrlSubmission(){
     var self = this;
     axios.post('/api/insert',
     {longUrl: self.state.longUrl})
     .then(response => {
-      console.log(response.data.short)
       self.setState({
         shortId: response.data.short
-      });
+      }, this.makeShortUrl);
     })
     .catch(function (err) {
       console.log('error', err);
     });
   }
 
+
+  makeShortUrl() {
+    var createdString = 'localhost:8080/api/' + this.state.shortId;
+    this.setState({
+      shortUrl: createdString
+    });
+  }
+
+  handleChange(e) {
+    this.setState({longUrl: e.target.value},
+    );
+  }
 
 
   render() {
