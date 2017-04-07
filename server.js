@@ -1,9 +1,13 @@
 import config from './config';
 import apiRouter from './api';
 import path from 'path';
+import bodyParser from 'body-parser';
 
 import express from 'express';
 const server = express();
+
+server.use(bodyParser.json());
+server.use(bodyParser.urlencoded({ extended: false }));
 
 server.set('view engine', 'ejs');
 
