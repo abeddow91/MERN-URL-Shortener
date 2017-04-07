@@ -35,3 +35,14 @@ it("it stores the users input", () => {
   ReactTestUtils.Simulate.click(btn);
   expect(testDoc.state.longUrl).toBe('https://www.facebook.com');
 });
+
+it("it stores the error message if an incorrect url is submitted", () => {
+    const testDoc = ReactTestUtils.renderIntoDocument(<UrlForm />);
+    const input = ReactTestUtils.findRenderedDOMComponentWithClass(testDoc, "input");
+    const btn = ReactTestUtils.findRenderedDOMComponentWithClass(testDoc, "btn");
+    const form = ReactTestUtils.findRenderedDOMComponentWithClass(testDoc, "form");
+    input.value = 'notaurl';
+    ReactTestUtils.Simulate.change(input);
+    ReactTestUtils.Simulate.submit(form);
+    expect(testDoc.state.errorMessage).toBe('Sorry that isn\'t a valid URL. Please provide a correct format eg: http://example.com');
+  });

@@ -16,7 +16,8 @@
     "mongodb": "^2.2.25",
     "mongoose": "^4.9.3",
     "react": "^15.4.2",
-    "react-dom": "^15.4.2"
+    "react-dom": "^15.4.2",
+    "validator": "^7.0.0"
   },
   "devDependencies": {
     "babel-cli": "^6.24.0",
