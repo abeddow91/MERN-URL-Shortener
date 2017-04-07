@@ -8,7 +8,7 @@ class App extends Component {
 
   state = {
     pageHeader: 'Url Shortener',
-    urls: []
+    urls: this.props.initialUrls
   };
 
   componentDidMount(){

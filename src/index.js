@@ -3,6 +3,6 @@ import ReactDOM from 'react-dom';
 import App from './components/App';
 
 ReactDOM.render (
-  <App headerMessage="URL Shortener" />,
+  <App initialUrls={[]} />,
  document.getElementById('root')
 );
