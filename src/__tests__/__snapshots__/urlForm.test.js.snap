@@ -9,6 +9,7 @@ exports[`should render the Header 1`] = `
   >
     <input
       className="input"
+      onChange={[Function]}
       placeholder="Paste a link to shorten it"
     />
     <br />
