@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import axios from 'axios';
 
 import Header from './Header';
 
@@ -6,8 +7,19 @@ import Header from './Header';
 class App extends Component {
 
   state = {
-    pageHeader: 'Url Shortener'
+    pageHeader: 'Url Shortener',
+    urls: []
   };
+
+  componentDidMount(){
+    axios.get('/api/urls')
+    .then(response => {
+      this.setState({
+        urls: response.data.urls
+      });
+    })
+    .catch(console.error);
+  }
 
   render () {
     return (
